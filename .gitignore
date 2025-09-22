@@ -1,0 +1,45 @@
+# -----------------
+# Spring Boot / Java
+# -----------------
+/target/
+/bin/
+/build/
+/out/
+/*.class
+/*.jar
+/*.war
+/*.iml
+/.classpath
+/.project
+/.settings/
+.mvn/wrapper/maven-wrapper.jar
+*.log
+*.tmp
+
+# Eclipse / IntelliJ / VSCode
+/.idea/
+/.vscode/
+/*.ipr
+/*.iws
+/HELP.md/
+
+# Maven
+/.mvn/wrapper/maven-wrapper.properties
+
+# -----------------
+# Node / React
+# -----------------
+/node_modules/
+/build/
+/dist/
+/npm-debug.log
+/yarn-error.log
+/.env
+/.pnp.*
+/coverage/
+
+# -----------------
+# OS Files
+# -----------------
+.DS_Store
+Thumbs.db
