@@ -22,8 +22,8 @@
 /*.ipr
 /*.iws
 HELP.md
-mnvw
-mnvw.cmd
+mvnw
+mvnw.cmd
 
 # Maven
 /.mvn/wrapper/maven-wrapper.properties
