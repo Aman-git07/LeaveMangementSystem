@@ -21,7 +21,7 @@
 /.vscode/
 /*.ipr
 /*.iws
-/HELP.md/
+HELP.md
 
 # Maven
 /.mvn/wrapper/maven-wrapper.properties
