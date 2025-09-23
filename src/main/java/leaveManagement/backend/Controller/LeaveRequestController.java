@@ -4,6 +4,8 @@ import jakarta.validation.Valid;
 import leaveManagement.backend.Entity.LeaveRequest;
 import leaveManagement.backend.Service.LeaveRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,28 +18,33 @@ public class LeaveRequestController {
     private LeaveRequestService leaveRequestService;
 
     @GetMapping
-    public List<LeaveRequest> getAllRequests(){
-        return leaveRequestService.getAllRequest();
+    public ResponseEntity<List<LeaveRequest>> getAllRequests() {
+        List<LeaveRequest> leaveRequests = leaveRequestService.getAllRequest();
+        return ResponseEntity.ok(leaveRequests);
     }
 
     @PostMapping
-    public LeaveRequest saveRequest(@Valid @RequestBody LeaveRequest leaveRequest){
-        return leaveRequestService.saveRequest(leaveRequest);
+    public ResponseEntity<LeaveRequest> saveRequest(@Valid @RequestBody LeaveRequest leaveRequest) {
+        LeaveRequest savedRequest = leaveRequestService.saveRequest(leaveRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedRequest);
     }
 
     @PutMapping("/{id}")
-    public LeaveRequest updateRequest(@PathVariable Long id,@Valid @RequestBody LeaveRequest leaveRequest){
+    public ResponseEntity<LeaveRequest> updateRequest(@PathVariable Long id, @Valid @RequestBody LeaveRequest leaveRequest) {
         leaveRequest.setId(id);
-        return leaveRequestService.updateRequest(leaveRequest);
+        LeaveRequest updatedRequest = leaveRequestService.updateRequest(leaveRequest);
+        return ResponseEntity.ok(updatedRequest);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteRequest(@PathVariable Long id){
+    public ResponseEntity<Void> deleteRequest(@PathVariable Long id) {
         leaveRequestService.deleteRequest(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("employee/{employeeId}")
-    public List<LeaveRequest> getAllRequestsByEmployee(@PathVariable Long employeeId){
-        return leaveRequestService.getAllRequestsByEmployee(employeeId);
+    public ResponseEntity<List<LeaveRequest>> getAllRequestsByEmployee(@PathVariable Long employeeId) {
+        List<LeaveRequest> leaveRequests = leaveRequestService.getAllRequestsByEmployee(employeeId);
+        return ResponseEntity.ok(leaveRequests);
     }
 }
